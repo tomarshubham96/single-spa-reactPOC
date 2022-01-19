@@ -18,7 +18,7 @@ export default function Chart2 (){
         { x: 5, y: 21 },
       ];
     return ( 
-        <Paper>
+                <Paper>
                    <Chart
                        data={data1}
                    >

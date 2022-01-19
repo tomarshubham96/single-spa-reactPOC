@@ -16,11 +16,6 @@
     "wsrun": "^5.2.4"
   },
   "workspaces": [
-    "packages\\chart1",
-    "packages\\chart2",
-    "packages\\sidenav",
-    "packages\\tablecomp",
-    "packages\\home",
-    "packages\\header"
+    "packages/*"
   ]
 }

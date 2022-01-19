@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import ReactDOM from 'react-dom';
 import { AiOutlineMenu } from "react-icons/ai";
 import { FaGem, FaHeart } from "react-icons/fa";
@@ -13,11 +13,11 @@ import "react-pro-sidebar/dist/css/styles.css";
 import singleSpaReact from 'single-spa-react';
 
 export default function SideNav (){
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
   // added styles 
   const styles = {
     sideBarHeight: {
-      height: "100vh",
+      height: "100%",
     },
     menuIcon: {
       float: "right",
