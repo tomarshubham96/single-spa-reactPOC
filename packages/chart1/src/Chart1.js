@@ -12,6 +12,7 @@ import store from 'store/store';
 export default function  Chart1(){
   
   const [data, setData] = React.useState(store.Chart1Data);
+  const [userInfo,setuserInfo] = React.useState({});
 
   React.useEffect(() => {
     store.subscribe(() => {      
@@ -20,13 +21,21 @@ export default function  Chart1(){
     console.log('chart 1  data=>',data)
   }, []);
 
-  const handleClick = () => {    
-    console.log(store.count)
+  const handleClick = () => {
+    let data = store.users;
+    store.addUser(userInfo);    
+    console.log('User Info2',userInfo);
+    setuserInfo({});
+  }
+
+  const handleUserData = (event) =>{
+    setuserInfo({'name': event.target.value})
   }
     
     return ( 
         <>
-        <p onClick={handleClick}>Hello</p>
+        <input type="text" value={userInfo.name} onChange={handleUserData} />
+        <button type="submit" onClick={handleClick}>Add User</button>
         <Paper>
             <Chart
               data={data}

@@ -7,6 +7,8 @@ const createStore = () => {
 
   let data1 = [];
 
+  let user = [{'name':'ayush'}];
+
   return {
     get count() {
       return count;
@@ -40,11 +42,11 @@ const createStore = () => {
       count += 1;
       subscribers.forEach(fn => fn());
     },
-    get image() {
-      return image;
+    get users(){
+      return user;
     },
-    set image(img) {
-      image = img;
+    addUser(userData){
+      user = [...user,userData];
       subscribers.forEach(fn => fn());
     },
     subscribe(fn) {

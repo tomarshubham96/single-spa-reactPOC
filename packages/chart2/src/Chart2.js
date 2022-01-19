@@ -12,15 +12,19 @@ import store from 'store/store';
 
 export default function Chart2 (){
   const [data1, setData1] = React.useState(store.Chart2Data);
+  const [users, setUsers] = React.useState(store.users);
   React.useEffect(() => {
     store.subscribe(() => {
       setData1(store.Chart2Data);
+      setUsers(store.users); //Get Users Data
     });
-    console.log('chart 2  data=>',store.Chart2Data)
   }, []);
 
     return ( 
       <>
+        <p>{users.map((item)=> (
+          <div>{item.name}</div>
+        ))}</p>
         <Paper>
           <Chart
               data={data1}
