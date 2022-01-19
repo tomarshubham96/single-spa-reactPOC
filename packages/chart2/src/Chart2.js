@@ -21,7 +21,6 @@ export default function Chart2 (){
 
     return ( 
       <>
-        <p>Hello</p>
         <Paper>
           <Chart
               data={data1}

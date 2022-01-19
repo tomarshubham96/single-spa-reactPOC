@@ -49,3 +49,4 @@ const chart1Lifecycles = singleSpaReact({
   export const mount = chart1Lifecycles.mount;
   export const unmount = chart1Lifecycles.unmount;
   
+  

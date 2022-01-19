@@ -30,4 +30,10 @@ registerApplication(
   location => location.pathname.startsWith('/')
 );
 
+registerApplication(
+  'footer',
+  () => import('footer/Footer'),
+  location => location.pathname.startsWith('/')
+);
+
 start();
