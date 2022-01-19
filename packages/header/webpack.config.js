@@ -49,6 +49,8 @@ module.exports = {
       library: { type: 'var', name: 'header' },
       filename: 'remoteEntry.js',
       remotes: {
+        store: 'store',
+        sidenav: 'sidenav'
       },
       exposes: {
         "./Header" : './src/header'

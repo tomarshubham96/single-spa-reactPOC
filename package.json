@@ -11,7 +11,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {    
+  "devDependencies": {
     "concurrently": "^7.0.0",
     "wsrun": "^5.2.4"
   },
@@ -21,6 +21,12 @@
     "packages\\sidenav",
     "packages\\tablecomp",
     "packages\\home",
-    "packages\\header"
-  ]
+    "packages\\header",
+    "packages\\store"
+  ],
+  "dependencies": {
+    "copy-webpack-plugin": "^10.2.0",
+    "serve": "^13.0.2",
+    "yarn": "^1.22.17"
+  }
 }

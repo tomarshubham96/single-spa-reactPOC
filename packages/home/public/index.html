@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <script src="http://localhost:3002/remoteEntry.js"></script>
-    <script src="http://localhost:3003/remoteEntry.js"></script>
+  <head>    
     <script src="http://localhost:3004/remoteEntry.js"></script>
     <script src="http://localhost:3005/remoteEntry.js"></script>
+    <script src="http://localhost:3002/remoteEntry.js"></script>    
+    <script src="http://localhost:3003/remoteEntry.js"></script>
     <script src="http://localhost:3006/remoteEntry.js"></script>
+    <script src="http://localhost:3009/remoteEntry.js"></script>
   </head>
   <body>
     <div>
-        <div id="single-spa-application:header"></div>
-      
-        <div id="single-spa-application:chart1"></div>
-        
-        <div id="single-spa-application:chart2"></div>
-
-        <div id="single-spa-application:sideNav"></div>
-
-        <div id="single-spa-application:tablecomp"></div>
+        <div id="single-spa-application:header"></div>      
+        <div style="display: flex;">          
+            <div id="single-spa-application:sidenav" style="width: auto;"></div>
+            <div style="display: flex;width: 100%;flex-wrap: wrap;justify-content: space-between;">
+              <div id="single-spa-application:chart1" style="width: 49%;padding: 5px 0px 0px 5px"></div>
+              <div id="single-spa-application:chart2" style="width: 49%;padding: 5px 0px 0px 5px"></div>
+              <div id="single-spa-application:tablecomp" style="width: 49%;padding: 5px 0px 0px 5px"></div>
+            </div>
+            
+        </div>
         
     </div>
   </body>

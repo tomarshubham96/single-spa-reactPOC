@@ -46,9 +46,9 @@ module.exports = {
       filename: 'remoteEntry.js',
       remotes: {
         header: 'header',
+        sidenav: 'sidenav',
         chart1: 'chart1',
         chart2: 'chart2',
-        sidenav: 'sidenav',
         tablecomp: 'tablecomp'
       },
       exposes: {

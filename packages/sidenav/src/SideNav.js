@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React,{ useState } from "react";
 import ReactDOM from 'react-dom';
 import { AiOutlineMenu } from "react-icons/ai";
 import { FaGem, FaHeart } from "react-icons/fa";
@@ -17,7 +17,7 @@ export default function SideNav (){
   // added styles 
   const styles = {
     sideBarHeight: {
-      height: "100vh",
+      height: "100%",
     },
     menuIcon: {
       float: "right",

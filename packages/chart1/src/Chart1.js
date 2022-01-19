@@ -7,24 +7,35 @@ import {
   Title
 } from '@devexpress/dx-react-chart-material-ui';
 import singleSpaReact from 'single-spa-react';
+import store from 'store/store';
 
 export default function  Chart1(){
-    const data = [
-        { argument:'Monday', value:10 },
-        { argument:'Tuesday', value:40 },
-        { argument:'Wednesday', value:10 },
-        { argument:'Thursday', value:20 },
-        { argument:'Friday', value:20 },
-      ];
+  
+  const [data, setData] = React.useState(store.Chart1Data);
+
+  React.useEffect(() => {
+    store.subscribe(() => {      
+      setData(store.Chart1Data);
+    });
+    console.log('chart 1  data=>',data)
+  }, []);
+
+  const handleClick = () => {    
+    console.log(store.count)
+  }
+    
     return ( 
+        <>
+        <p onClick={handleClick}>Hello</p>
         <Paper>
-                     <Chart
-                        data={data}
-                      >
-                         <PieSeries valueField="value" argumentField="argument" />
-                         <Title text="Studies per day"/>
-                     </Chart>
-                </Paper>
+            <Chart
+              data={data}
+            >
+                <PieSeries valueField="value" argumentField="argument" />
+                <Title text="Studies per day"/>
+            </Chart>
+        </Paper>
+        </>
      );
 }
 
