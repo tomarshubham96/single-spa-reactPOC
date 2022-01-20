@@ -30,4 +30,22 @@ registerApplication(
   location => location.pathname.startsWith('/')
 );
 
+registerApplication(
+  'footer',
+  () => import('footer/Footer'),
+  location => location.pathname.startsWith('/')
+);
+
+registerApplication(
+  'inputuser',
+  () => import('inputuser/inputuser'),
+  location => location.pathname.startsWith('/')
+);
+
+registerApplication(
+  'showuser',
+  () => import('showuser/showuser'),
+  location => location.pathname.startsWith('/')
+);
+
 start();

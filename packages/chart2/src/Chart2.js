@@ -8,25 +8,30 @@ import {
   LineSeries
 } from '@devexpress/dx-react-chart-material-ui';
 import singleSpaReact from 'single-spa-react';
+import store from 'store/store';
 
 export default function Chart2 (){
-    const data1 = [
-        { x: 1, y: 30 },
-        { x: 2, y: 40 },
-        { x: 3, y: 5 },
-        { x: 4, y: 2 },
-        { x: 5, y: 21 },
-      ];
+  const [data1, setData1] = React.useState(store.Chart2Data);
+  const [users, setUsers] = React.useState(store.users);
+  React.useEffect(() => {
+    store.subscribe(() => {
+      setData1(store.Chart2Data);
+      setUsers(store.users); //Get Users Data
+    });
+  }, []);
+
     return ( 
+      <>
         <Paper>
-                   <Chart
-                       data={data1}
-                   >
-                   <ArgumentAxis />
-                   <ValueAxis />
-                   <LineSeries valueField="y" argumentField="x" />
-                   </Chart>
-                </Paper>
+          <Chart
+              data={data1}
+          >
+          <ArgumentAxis />
+          <ValueAxis />
+          <LineSeries valueField="y" argumentField="x" />
+          </Chart>
+        </Paper>
+      </>
      );
 }
 

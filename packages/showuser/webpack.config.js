@@ -15,7 +15,7 @@ module.exports = {
   },
 
   output: {
-    publicPath: 'http://localhost:3001/',
+    publicPath: 'http://localhost:3011/',
     path: path.resolve(process.cwd(), 'dist')
   },
 
@@ -41,23 +41,16 @@ module.exports = {
 
   plugins: [
     new ModuleFederationPlugin({
-      name: 'home',
-      library: { type: 'var', name: 'home' },
+      name: 'showuser',
+      library: { type: 'var', name: 'showuser' },
       filename: 'remoteEntry.js',
       remotes: {
-        header: 'header',
-        sidenav: 'sidenav',
-        chart1: 'chart1',
-        chart2: 'chart2',
-        sidenav: 'sidenav',
-        tablecomp: 'tablecomp',
-        footer:'footer',
-        inputuser:'inputuser',
-        showuser:'showuser'
+        store: 'store'
       },
       exposes: {
+        "./showuser" : './src/showuser'
       },
-      shared: []
+      shared: require("./package.json").dependencies,
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html'

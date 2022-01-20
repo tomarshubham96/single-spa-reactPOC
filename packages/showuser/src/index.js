@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import Chart1 from './Chart1';
-
+import showuser from './showuser';
 
 ReactDOM.render(
     <React.Fragment>
-            <Chart1 />
+            <showuser />
       </React.Fragment>,
     document.getElementById('root')
   );
-  

@@ -45,6 +45,7 @@ module.exports = {
       library: { type: 'var', name: 'chart1' },
       filename: 'remoteEntry.js',
       remotes: {
+        store:'store'
       },
       exposes: {
         "./Chart1" : './src/Chart1.js'

@@ -1,10 +1,9 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const path = require('path');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  entry: './src/index',
+  entry: './src/store',
   cache: false,
 
   mode: 'development',
@@ -15,8 +14,7 @@ module.exports = {
   },
 
   output: {
-    publicPath: 'http://localhost:3001/',
-    path: path.resolve(process.cwd(), 'dist')
+    publicPath: 'http://localhost:3009/'
   },
 
   resolve: {
@@ -41,27 +39,18 @@ module.exports = {
 
   plugins: [
     new ModuleFederationPlugin({
-      name: 'home',
-      library: { type: 'var', name: 'home' },
+      name: 'store',
+      library: { type: 'var', name: 'store' },
       filename: 'remoteEntry.js',
       remotes: {
-        header: 'header',
-        sidenav: 'sidenav',
-        chart1: 'chart1',
-        chart2: 'chart2',
-        sidenav: 'sidenav',
-        tablecomp: 'tablecomp',
-        footer:'footer',
-        inputuser:'inputuser',
-        showuser:'showuser'
       },
       exposes: {
+        "./store" : './src/store.js'
       },
       shared: []
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html'
     }),
-    new CleanWebpackPlugin(),
   ]
 };
