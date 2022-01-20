@@ -21,21 +21,8 @@ export default function  Chart1(){
     console.log('chart 1  data=>',data)
   }, []);
 
-  const handleClick = () => {
-    let data = store.users;
-    store.addUser(userInfo);    
-    console.log('User Info2',userInfo);
-    setuserInfo({});
-  }
-
-  const handleUserData = (event) =>{
-    setuserInfo({'name': event.target.value})
-  }
-    
     return ( 
         <>
-        <input type="text" value={userInfo.name} onChange={handleUserData} />
-        <button type="submit" onClick={handleClick}>Add User</button>
         <Paper>
             <Chart
               data={data}

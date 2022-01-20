@@ -22,9 +22,6 @@ export default function Chart2 (){
 
     return ( 
       <>
-        <p>{users.map((item)=> (
-          <div>{item.name}</div>
-        ))}</p>
         <Paper>
           <Chart
               data={data1}
