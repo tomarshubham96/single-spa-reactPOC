@@ -27,9 +27,6 @@ export default function showuser (){
       <h4>Showing the name entered</h4>
       <TableContainer component={Paper}>
         <Table
-          style={{
-            width: 600,
-          }}
           size="small"
         >
           <TableHead>
@@ -39,12 +36,12 @@ export default function showuser (){
           </TableHead>
           <TableBody>
             {users.map((row) => (
-              {row.name.length>0 && 
+              row.name.length>1 && 
                 <TableRow key={row.columnName}>
                 <TableCell component="th" scope="row">
-                  row.name
+                  {row.name}
                 </TableCell>
-              </TableRow>}
+              </TableRow>
             ))}
           </TableBody>
         </Table>
