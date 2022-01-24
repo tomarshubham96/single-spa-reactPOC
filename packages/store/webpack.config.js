@@ -45,7 +45,9 @@ module.exports = {
       remotes: {
       },
       exposes: {
-        "./store" : './src/store.js'
+        "./store" : './src/anotherstore.js',
+        "./reduxStore" : './src/store.js',
+        "./counterSlice": '/src/counterSlice.js'
       },
       shared: []
     }),

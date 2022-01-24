@@ -5,7 +5,7 @@ import Chart2 from './Chart2';
 
 ReactDOM.render(
     <React.Fragment>
-            <Chart2 />
-      </React.Fragment>,
+      <Chart2 />
+    </React.Fragment>,
     document.getElementById('root')
   );

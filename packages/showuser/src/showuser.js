@@ -10,6 +10,8 @@ import TableCell from "@material-ui/core/TableCell";
 import singleSpaReact from 'single-spa-react';
 import store from 'store/store';
 
+import Inputuser from 'inputuser/inputuser';
+
 export default function showuser (){
   const [data1, setData1] = React.useState(store.Chart2Data);
   const [users, setUsers] = React.useState(store.users);
@@ -21,34 +23,31 @@ export default function showuser (){
   }, []);
 
     return ( 
-      <>
-        <Paper>
-         <div style={{ display: "block", padding: 30 }}>
-      <h4>Showing the name entered</h4>
-      <TableContainer component={Paper}>
-        <Table
-          size="small"
-        >
-          <TableHead>
-            <TableRow>
-              <TableCell style={{ fontWeight:"bold"}}>Name Entered</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {users.map((row) => (
-              row.name.length>1 && 
-                <TableRow key={row.columnName}>
-                <TableCell component="th" scope="row">
-                  {row.name}
-                </TableCell>
+      <Paper>
+        <div style={{ display: "block", padding: 30 }}>           
+          <Inputuser />
+          <h4>Showing the names</h4>
+        <TableContainer component={Paper}>
+          <Table size="small">
+            <TableHead>
+              <TableRow>
+                <TableCell style={{ fontWeight:"bold"}}>Name Entered</TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </div>
-        </Paper>
-      </>
+            </TableHead>
+            <TableBody>
+              {users.map((row) => (
+                row.name.length>1 && 
+                  <TableRow key={row.columnName}>
+                  <TableCell key={row.columnName} component="th" scope="row">
+                    {row.name}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        </div>
+      </Paper>
      );
 }
 

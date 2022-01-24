@@ -1,0 +1,11 @@
+import React from "react";
+//import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import MainFooter from './mainFooter';
+import './Footer.css';
+
+export default function Main(){    
+    return (
+        <MainFooter />
+    );
+  }
+

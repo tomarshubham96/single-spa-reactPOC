@@ -2,6 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const path = require('path');
+const deps = require("./package.json").dependencies;
 
 module.exports = {
   entry: './src/index',
@@ -12,6 +13,13 @@ module.exports = {
 
   optimization: {
     minimize: false
+  },
+
+  devServer: {
+    contentBase: path.join(__dirname, "public"),
+    host: '0.0.0.0',
+    port: 3003,
+    historyApiFallback: true
   },
 
   output: {
@@ -49,7 +57,17 @@ module.exports = {
       exposes: {
         "./Table1" : './src/Table1'
       },
-      shared: require("./package.json").dependencies,
+      shared: {
+        ...deps,
+        react: {
+          singleton: true,
+          requiredVersion: deps.react,
+        },
+        "react-dom": {
+          singleton: true,
+          requiredVersion: deps["react-dom"],
+        },
+      },
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html'

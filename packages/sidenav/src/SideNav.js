@@ -57,9 +57,22 @@ export default function SideNav (){
 const sidenavLifecycles = singleSpaReact({
   React,
   ReactDOM,
-  rootComponent: SideNav
+  rootComponent: SideNav,
+  domElementGetter
 });
 
 export const bootstrap = sidenavLifecycles.bootstrap;
 export const mount = sidenavLifecycles.mount;
 export const unmount = sidenavLifecycles.unmount;
+
+function domElementGetter() {
+  let el = document.getElementById("sidenav");
+  if (!el) {
+    el = document.createElement('div');
+    el.id = 'sidenav';
+    //document.getElementById('second').appendChild(el);
+    document.body.appendChild(el);
+  }
+
+  return el;
+}

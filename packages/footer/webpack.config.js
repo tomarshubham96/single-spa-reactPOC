@@ -2,6 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const path = require('path');
+const deps = require("./package.json").dependencies;
 
 module.exports = {
   entry: './src/index',
@@ -9,7 +10,12 @@ module.exports = {
 
   mode: 'development',
   devtool: 'source-map',
-
+  devServer: {
+    contentBase: path.join(__dirname, "public"),
+    host: '0.0.0.0',
+    port: 3007,
+    historyApiFallback: true
+  },
   optimization: {
     minimize: false
   },
@@ -47,13 +53,27 @@ module.exports = {
     new ModuleFederationPlugin({
       name: 'footer',
       library: { type: 'var', name: 'footer' },
-      filename: 'remoteEntry.js',
+      filename: 'footer.js',
       remotes: {
+        store:'store',
+        reduxStore: 'reduxStore',
+        counterSlice: 'counterSlice',
+        mfMore: 'mfMore'
       },
       exposes: {
         "./Footer" : './src/Footer'
       },
-      shared: require("./package.json").dependencies,
+      shared: {
+        ...deps,
+        react: {
+          singleton: true,
+          requiredVersion: deps.react,
+        },
+        "react-dom": {
+          singleton: true,
+          requiredVersion: deps["react-dom"],
+        },
+      }
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html'

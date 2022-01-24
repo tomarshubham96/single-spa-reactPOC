@@ -5,9 +5,11 @@
   "dependencies": {
     "@babel/core": "^7.16.7",
     "@babel/preset-react": "^7.16.7",
+    "@reduxjs/toolkit": "^1.7.1",
     "babel-loader": "^8.2.3",
     "copy-webpack-plugin": "^5.1.1",
     "html-webpack-plugin": "^5.5.0",
+    "react-redux": "^7.2.6",
     "serve": "^13.0.2",
     "single-spa": "^5.9.3",
     "webpack": "^5.66.0",

@@ -1,12 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import singleSpaReact from 'single-spa-react';
+import React,{useState} from 'react';
 import store from 'store/store';
 
-export default function  inputuser(){
-  
-  const [userInfo,setuserInfo] = React.useState({});
+export default function inputuser(){
 
+  const [userInfo,setuserInfo] = useState({});
 
   const handleClick = () => {
     let data = store.users;
@@ -16,25 +13,16 @@ export default function  inputuser(){
   }
 
   const handleUserData = (event) =>{
+    console.log('Name',event.target.value);
     setuserInfo({'name': event.target.value})
   }
     
     return ( 
-        <>
-        <input type="text" value={userInfo.name} onChange={handleUserData} />
-        <button type="submit" onClick={handleClick}>Add User</button>
-        </>
+        <div>
+          <p style={{margin: '5px 0'}}>Add Names:</p>
+          <input type="text" value={userInfo.name} onChange={handleUserData} />
+          <button style={{margin: '4px'}} type="submit" onClick={handleClick}>Add User</button>          
+          <hr />
+        </div>
      );
 }
-
-const inputuserLifecycles = singleSpaReact({
-    React,
-    ReactDOM,
-    rootComponent: inputuser
-  });
-  
-  export const bootstrap = inputuserLifecycles.bootstrap;
-  export const mount = inputuserLifecycles.mount;
-  export const unmount = inputuserLifecycles.unmount;
-  
-  
